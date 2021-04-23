@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{student/layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Student</title>
+</head>
+
+<body>
+	<main layout:fragment="content">
+
+		<section class="graphs">
+			<div class="performance">
+				<h3>Performance</h3>
+				<canvas id="performance_chart"></canvas>
+			</div>
+			<div class="right-charts">
+				<div class="chart attendance_chart">
+					<span>60%</span>
+					<canvas id="attendance_chart"></canvas>
+				</div>
+				<div class="chart assignment_chart">
+					<span>60%</span>
+					<canvas id="assignment_chart"></canvas>
+				</div>
+				<div class="chart test_chart">
+					<span>60%</span>
+					<canvas id="test_chart"></canvas>
+				</div>
+				<div class="labels">
+					<div class="label attendance">Attendance</div>
+					<div class="label assignment">Assignment</div>
+					<div class="label test">Test</div>
+				</div>
+			</div>
+		</section>
+		<section class="bottom">
+			<div class="assignments">
+				<div class="title">
+					<h3>Assignment</h3>
+					<a href="#">View all</a>
+				</div>
+				<th:block th:unless="${not #lists.isEmpty(assignments)}">
+				<p>No Assignments</p>
+				</th:block>
+				<div class="assignment" th:each="assignment : ${assignments}">
+					<div class="details">
+						<h4 th:text="${assignment.subject}">Physics</h4>
+						<p>
+							Submit before: <span th:text="${assignment.assignment_date}">Date</span>
+						</p>
+					</div>
+					<a th:href="@{/downloadAssignment/{assignment_id}(assignment_id=${assignment.assignment_id})}">
+						<div class="download">
+							<i class="fas fa-arrow-down"></i>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="notifications">
+				<div class="title">
+					<h3>Notifications</h3>
+					<a href="#">View all</a>
+				</div>
+				<div class="notification">
+					<h4>Change in Schedule</h4>
+					<div class="notification-content">
+						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+							Reprehenderit vel doloribus culpa laudantium distinctio esse
+							voluptatibus sit totam maiores eos.</p>
+					</div>
+					<p>
+						10-10-2020 <a id="viewNotification-1"
+							onclick="show_notification(this.id)">View</a>
+					</p>
+				</div>
+				<div class="notification">
+					<h4>Change in Schedule</h4>
+					<div class="notification-content">
+						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+							Reprehenderit vel doloribus culpa laudantium distinctio esse
+							voluptatibus sit totam maiores eos.</p>
+					</div>
+					<p>
+						10-10-2020 <a id="viewNotification-2"
+							onclick="show_notification(this.id)">View</a>
+					</p>
+				</div>
+				<div class="notification">
+					<h4>Change in Schedule</h4>
+					<div class="notification-content">
+						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+							Reprehenderit vel doloribus culpa laudantium distinctio esse
+							voluptatibus sit totam maiores eos.</p>
+					</div>
+					<p>
+						10-10-2020 <a id="viewNotification-3"
+							onclick="show_notification(this.id)">View</a>
+					</p>
+				</div>
+				<span>Thats All For Now</span>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

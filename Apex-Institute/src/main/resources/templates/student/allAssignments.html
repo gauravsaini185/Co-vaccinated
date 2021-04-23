@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{student/layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Student</title>
+<style>
+.empty p,h2{
+	text-align: center;
+	margin:.5em;
+}
+
+.empty b{
+	color: #673ab7;
+}
+h2{
+font-weight: 500;
+border-bottom: 1px solid lightGrey;
+padding-bottom: .25em;
+margin-bottom: .25em;
+color: #333;
+letter-spacing: 1px;
+}
+
+</style>
+</head>
+
+<body>
+	<main layout:fragment="content">
+		<div class="container">
+			<div class="assignments">
+				<div class="title">
+					<h2>Assignments</h2>
+					<a href="#">View all</a>
+				</div>
+					<div class="container">
+				<th:block th:unless="${not #lists.isEmpty(assignments)}">
+					<div class="empty">
+					<p>Assignments not available</p>
+						<p><b>Enjoy till then...</b></p>
+					</div>
+				</th:block>
+				<th:block th:unless="${#lists.isEmpty(assignments)}">
+					<div class="assignment" th:each="assignment : ${assignments}">
+						<div class="details">
+							<h4 th:text="${assignment.subject}">Physics</h4>
+							<p>
+								Submit before: <span th:text="${assignment.assignment_date}">Date</span>
+							</p>
+						</div>
+						<a
+							th:href="@{/downloadAssignment/{assignment_id}(assignment_id=${assignment.assignment_id})}">
+							<div class="download">
+								<i class="fas fa-arrow-down"></i>
+							</div>
+						</a>
+					</div>
+				</th:block>
+			</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

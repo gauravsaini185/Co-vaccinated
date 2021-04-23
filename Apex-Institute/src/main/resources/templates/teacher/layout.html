@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--Import Animate.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css"
+        integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+
+    <!--Import font awesome-->
+    <script src="https://kit.fontawesome.com/65a7239007.js" crossorigin="anonymous"></script>
+
+    <!--Import Modified css-->
+    <link rel="stylesheet" href="css/Style/modified.css">
+    <link rel="stylesheet" href="css/sass/alerts.css">
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/Style/sass/materialize.css" media="screen,projection" />
+
+    <!-- Import chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <!-- Import DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+</head>
+
+<body>
+    <!-- Admin Header -->
+    <header>
+        <div class="navbar-fixed">
+            <nav class="navbar white">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i
+                                class="material-icons deep-purple-text">menu</i></a>
+                        <a href="#!" class="brand-logo deep-purple-text left">Apex</a>
+                        <ul class="right">
+                            <li><a href="/viewProfile" class="deep-purple-text"><i
+                                        class="material-icons left deep-purple-text">perm_identity</i>Profile</a>
+                            </li>
+                            <li><a href="/logout" class="deep-purple-text"><i
+                                        class="material-icons left deep-purple-text">power_settings_new</i>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Admin Header End -->
+
+        <!-- Body -->
+        <ul id="slide-out" class="sidenav sidenav-fixed z-depth-0 blue-grey darken-3 white-text">
+            <li><a href="/teacher" class="brand-logo white-text">
+                    <h5><i class="material-icons">spa</i>Dashboard</h5>
+                </a></li>
+            <div class="divider"></div>
+            <ul class="collapsible collapsible-accordion">
+               
+                <li>
+                    <span class="collapsible-header waves-effect "><a href="/batchesForAttendance" class="white-text"><i
+                                class="material-icons">show_chart</i>Attendance</a></span>
+                    <!-- <div class="collapsible-body blue-grey darken-2">
+                        <ul>
+                            <li><span><a href="/allBatchesForAttendance" class="white-text">New</a></span></li>
+                            <li><span><a href="/addBatch" class="white-text">View</a></span></li>
+                        </ul>
+
+                    </div> -->
+                </li>
+                <li>
+                    <span class="collapsible-header waves-effect "><a class="white-text"><i
+                                class="material-icons">assignment</i>Assignment</a></span>
+                    <div class="collapsible-body blue-grey darken-2">
+                        <ul>
+                            <li><span><a href="#" class="white-text">New</a></span></li>
+                            <li><span><a href="/allAssignments" class="white-text">All</a></span></li>
+                        </ul>
+
+                    </div>
+                </li>
+                
+                <li>
+                    <span class="collapsible-header waves-effect "><a class="white-text"><i
+                                class="material-icons">assessment</i>Test</a></span>
+                    <div class="collapsible-body blue-grey darken-2">
+                        <ul>
+                            <li><span><a href="/addAssignment" class="white-text">New</a></span></li>
+                            <li><span><a href="/allAssignments" class="white-text">All</a></span></li>
+                        </ul>
+
+                    </div>
+                </li>
+            </ul>
+        </ul>
+    </header>
+    <!-- Body Ends -->
+    <main>
+        <section layout:fragment="content">
+            <p>Page content goes here</p>
+        </section>
+    </main>
+
+    <!-- Floating Button -->
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large deep-purple">
+            <i class="large material-icons">add</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating red tooltipped" data-position="left" data-tooltip="Test"><i
+                        class="material-icons">assessment</i></a></li>
+            <li><a href="/addAssignment" class="btn-floating yellow darken-1 tooltipped" data-position="left"
+                    data-tooltip="Create Assignment"><i class="material-icons">assignment</i></a></li>
+            <li><a href="/addTeacher" class="btn-floating green tooltipped" data-position="left" data-tooltip="Add Teacher"><i
+                        class="material-icons">assignment_ind</i></a></li>
+            <li><a href="/addStudent" class="btn-floating blue tooltipped" data-position="left" data-tooltip="Add Student"><i
+                        class="material-icons">person_add</i></a></li>
+        </ul>
+    </div>
+
+    <!-- Floation Button End -->
+    <!-- footer -->
+
+    <div id="footer">
+        <div th:replace="footer:: footer"></div>
+    </div>
+
+    <!-- footer ends -->
+
+    <script type="text/javascript" src="css/style/materialize.min.js"></script>
+    <script type="text/javascript" src="css/style/modified.js"></script>
+    <script type="text/javascript" src="css/style/chart.js"></script>
+</body>
+
+</html>

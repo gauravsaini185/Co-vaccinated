@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+    <title>Update Student</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <th:block th:if="${message}">
+        <br>
+        <section class="container materialert success">
+            <i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+        </section>
+    </th:block>
+    <div class=" container">
+        <h4 class="deep-purple-text">Update Student</h4>
+        <div class="divider"></div><br>
+        <div class="row">
+            <form th:action="@{/updateStudent}" method="Post" th:object="${student}" enctype="multipart/form-data">
+                <div class="container">
+                <input type="hidden" th:field="*{user_id}" />
+                    <div class="col s12 valign-wrapper">
+                        <div class="col s8">
+                            <div class="input-field">
+                                <input id="name" type="text" class="validate" th:field="*{name}" required>
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="phone" type="text" class="validate" th:field="*{phone}" required>
+                                <label for="phone">Phone No.</label>
+                            </div>
+                        </div>
+                        <div class="col s3 offset-s1">
+                            <p>Gender :</p>
+                            <p>
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" value="male" th:field="*{gender}"
+                                           required />
+                                    <span>Male</span>
+                                </label></p>
+                            <p>
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" value="female"
+                                           th:field="*{gender}" required />
+                                    <span>Female</span>
+                                </label></p>
+
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate" th:field="*{email}" required>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class=" col s12 file-field input-field">
+                    	<input type="file" id="file" name="file" accept="image/*">
+						<label for="file">File</label>							
+						<input id="validate" class="file-path " type="text">
+						<span class="helper-text red-text"></span>
+					</div>
+                    <div class="col s12">
+                        <div class="input-field col s12">
+                            <select multiple th:field="*{batches}">
+                                <option value="" disabled selected>Batch</option>
+                                <option th:each="batch : ${batches}"
+                                        th:value="${batch.batch_id}"
+                                        th:text="${batch.batch_name}">
+                                    Batch
+                                </option>
+                            </select>
+                            <label>Select Batch</label>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="container">
+                            <button type="submit" class="btn deep-purple">Update Student</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

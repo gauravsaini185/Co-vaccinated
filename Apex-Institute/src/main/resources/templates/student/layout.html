@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="ISO-8859-1">
+
+
+	<!-- up -->
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!--Import Animate.css-->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css"
+	integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk="
+	crossorigin="anonymous" />
+
+<!--Import font awesome-->
+<script src="https://kit.fontawesome.com/65a7239007.js"
+	crossorigin="anonymous"></script>
+
+
+<!-- Import chart js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+	crossorigin="anonymous"></script>
+	     <!--Import materialize.css-->
+<!--     <link type="text/css" rel="stylesheet" href="css/Style/sass/materialize.css" media="screen,projection" />
+ -->	
+<link rel="stylesheet" href="css/style.css">
+<title>Insert title here</title>
+<style>
+.profile-pic{
+object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<div class="logo">Welcome!</div>
+			<nav>
+				<!-- <ul>
+					<li><a href="#">Reports</a></li>
+					<li><a href="#">Fees</a></li>
+					<li><a href="#">Schedule</a></li>
+				</ul> -->
+			</nav>
+			<div class="mobile toggle-sidenav">
+				<i class="fas fa-bars" onclick="openSidenav()"></i>
+			</div>
+		</div>
+	</header>
+	<div class="grid-container">
+		<div class="sidenav " id="openSidenav">
+			<div class="profile">
+				<a href="javascript:void(0)" class="closebtn mobile" onclick="closeSidenav()">&times;</a> 
+		<img th:src="${user.file_path}" class="profile-pic" alt="Profile avatar">
+				<div class="name" th:text="${user.name}">Your Name</div>
+				<a href="/viewStudentProfile">Edit Profile</a>
+			</div>
+			<div class="menu">
+	<ul>
+					<li><a href="/student" class="active">Dashboard</a></li>
+					<li><a href="/accommodationFor">Accommodation</a></li>
+					<li><a href="/shipmentFor">Shipment</a></li>
+					<!-- <li><a href="#">Tests</a></li> -->
+				</ul>
+			</div>
+			<div class="logout">
+				<a href="/logout" style="padding:0"><i class="fas fa-power-off"></i></a>
+			</div>
+		</div>
+		<section layout:fragment="content">
+			<p>Page content goes here</p>
+		</section>
+	</div>
+
+	<!-- footer -->
+
+	<!-- <div id="footer">
+		<div th:replace="footer:: footer"></div>
+	</div>
+ -->
+	<!-- footer ends -->
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/chart.js"></script>
+	<script type="text/javascript" src="js/modified.js"></script>
+</body>
+
+</html>

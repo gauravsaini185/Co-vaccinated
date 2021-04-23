@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+    <title>Add Batch</title>
+</head>
+
+<body>
+
+    <div layout:fragment="content">
+        <th:block th:if="${message}">
+            <br>
+            <section class="container materialert success">
+                <i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+            </section>
+        </th:block>
+        <div class=" container">
+            <h4 class="deep-purple-text">New Batch</h4>
+            <div class="divider"></div><br>
+            <div class="row">
+                <form th:action="@{/addBatch}" method="POST" th:object="${batch}">
+                    <div class="input-field col s12">
+                        <input id="name" type="text" class="validate" th:field="*{batch_name}" required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select id="schedule" name="schedule" th:field="*{schedule}">
+                            <option value="" disabled>Select</option>
+                            <option value="All Days">All Days</option>
+                            <option value="M W F">M W F</option>
+                            <option value="T T S">T T S</option>
+                        </select>
+                        <label>schedule</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="schedule" class="timepicker" type="text" th:field="*{batch_time}" required>
+                        <label for="class">Time</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="class" type="text" class="validate" th:field="*{batch_class}" required>
+                        <label for="class">Class</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="subject" type="text" class="validate" th:field="*{subject}" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="fee" type="text" class="validate" th:field="*{batch_fee}" value="" required>
+                        <label for="fee">Fees</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select id="teacher" name="teacher" th:field="*{batch_teacher}">
+                            <option value="" disabled>Select Teacher</option>
+                            <option th:each="teacher : ${teachers}" th:value="${teacher.user_id}"
+                                        th:text="${teacher.name}"></option>
+                        </select>
+                        <label>Teacher</label>
+                    </div>
+                    <div class="row center">
+                        <button type="submit" class="btn center deep-purple">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

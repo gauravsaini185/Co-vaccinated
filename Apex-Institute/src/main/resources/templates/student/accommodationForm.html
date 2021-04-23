@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{student/layout}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<title>Accomodation</title>
+</head>
+<body>
+<main layout:fragment="content">
+<th:block th:if="${message}">
+            <br>
+            <section class="container materialert success">
+                <i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+            </section>
+        </th:block>
+
+
+	<h1 style="color:black">Acommodation Form </h1>
+	<hr>
+
+<section >
+	<form th:action="@{/accommodationFor}" method="POST" th:object="${accommodation}">
+	<div class="container-fluid">
+		<div class="form-group">
+			<div class="col-lg-6 col-md-6 col-12 form-group">
+				<label>Name</label>
+				<input id="name" type="text" name="name" class="form-control"  th:field="*{name}" required>
+
+			</div>
+				
+		</div>
+		<div  class = "col-lg-6 col-md-6 col-12">
+		<div class="form-group">
+			<label>E-mail</label>
+			<input id="email" type="text" name="E-mail" th:field="*{email}" required class="form-control">
+		</div>
+		<div class="form-group">
+			<label>University/College name</label>
+			<input id="collegeName" type="text" name="cname" class="form-control " th:field="*{collegeName}" required>
+		</div>
+		<div class="form-group">
+			<label>University/College Roll no</label>
+			<input id="collegeRollNo" type="text" name="Roll" class="form-control " th:field="*{collegeRollNo}" required>
+		</div>
+	</div>
+	<div class="form-group">
+  	<label>University Address</label>
+  	 <textarea class="form-control" rows="5" id="comment" th:field="*{collegeAddress}"></textarea>
+  </div>
+	<div class="col-lg-6 col-md-6 col-12">
+                        <select id="room" name="room" th:field="*{roomType}">
+                            <option value="" disabled>Select</option>
+                            <option value="All Days">Non AC</option>
+                            <option value="M W F">AC</option>
+                        </select>
+                        <label>Select Room type</label>
+                    </div>
+	
+	<br>
+		<div class="row">
+				<label for="example-datetime-local-input" class="col-2 col-form-label">Arrival Date &Time</label>
+				<div class="col-lg-6 col-md-6 col-12">
+      <input class="form-control" type="datetime-local" value="" id="example-datetime-local-input"  th:field="*{arrivalDateTime}">
+  </div>
+</div><br>
+<!--   <div class="form-group ">
+  	<label>Departure time</label>
+  	<div class="row">
+  		<input id="departureDate" type="text" name="month" class="form-control col-lg-3 col-md-3 col-6 " placeholder="month" th:field="*{departureDate}">
+  	</div><br>
+  	<div class="form-group">
+  	<label>Free Pickup ? </label>
+  	<input class="form-control" type="datetime-local" value="" id="freePickup"  th:field="*{freePickup}">
+  	 
+  </div>
+   <div class="row form-group">
+  	<div class="form col-lg-3 col-md-3 col-12">
+  		<label>Flight Number</label>
+  		<input id="flightNo" type="text" name="number" class="form-control" th:field="*{flightNo}">
+  	</div>
+  </div> -->
+  <div class="form-group">
+  	<label>Special Request</label>
+  	 <textarea class="form-control" rows="5" id="comment" th:field="*{specialRequest}"></textarea>
+  </div>
+  <div class="text-center">
+
+  <button type="submit" class="btn-lg btn-success btn-outline-dark "> Submit</button>
+</div> 
+
+	</div>
+	</div>
+	</form>
+</section>
+</main>
+</body>
+</html>

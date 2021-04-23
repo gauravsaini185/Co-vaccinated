@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+	<title>Add Shipment</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<th:block th:if="${message}">
+			<br>
+			<section class="container materialert success">
+				<i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+			</section>
+		</th:block>
+		<div class=" container">
+			<h4 class="deep-purple-text">New Shipment</h4>
+			<div class="divider"></div>
+			<br>
+			<div class="row">
+				<form th:action="@{/addShipment}" method="POST" enctype="multipart/form-data" th:object="${shipment}">
+				<div class="col s12">
+				
+					<div class="input-field col s6">
+                        <input id="name" type="text" class="validate" name="subject" required th:field="*{name}">
+                        <label for="name">Name</label>
+                    </div>
+                    
+					<div class="input-field col s6">
+                        <input id="subject" type="text" class="validate" name="subject" required th:field="*{email}">
+                        <label for="name">Email</label>
+                    </div>
+                    </div>
+                    <div class="col s12">
+				
+					<div class="input-field col s6">
+                        <input id="name" type="text" class="validate" name="subject" required th:field="*{college}">
+                        <label for="name">University Name</label>
+                    </div>
+                    
+					<div class="input-field col s6">
+                        <input id="subject" type="text" class="validate" name="subject" required th:field="*{collegeRollNo}">
+                        <label for="name">University Roll No</label>
+                    </div>
+                    </div>
+                    <div class="col s12">
+				
+					<div class="input-field col s6">
+                        <input id="name" type="text" class="validate" name="subject" required th:field="*{coll_address}">
+                        <label for="name">University Address</label>
+                    </div>
+                    
+					<div class="input-field col s6">
+                        <input id="subject" type="text" class="validate" name="subject" required th:field="*{contact_Person}">
+                        <label for="name">Contact Person Name</label>
+                    </div>
+                    </div>
+                     <div class="col s12">
+				
+					<div class="input-field col s6">
+                        <input id="name" type="text" class="validate" name="subject" required th:field="*{phone}">
+                        <label for="name">Contact Person Phone No</label>
+                    </div>
+                    
+					<div class="input-field col s6">
+                        <input id="subject" type="text" class="validate" name="subject" required th:field="*{address}">
+                        <label for="name">Shipping Address</label>
+                    </div>
+                    </div>
+                      <div class="col s12">
+				
+					<div class="input-field col s6">
+                        <input id="name" type="time" class="validate" name="subject" required th:field="*{delivery_Time_From}">
+                        <label for="name">Delivery Time(From)</label>
+                    </div>
+                    
+					<div class="input-field col s6">
+                        <input id="subject" type="time" class="validate" name="subject" required th:field="*{delivery_Time_To}">
+                        <label for="name">Delivery Time(To)</label>
+                    </div>
+                    </div>
+                    <div class="col s12">
+				
+					<div class="input-field col s6">
+                        <input id="name" type="text" class="validate" name="subject" required th:field="*{your_Belongings}">
+                        <label for="name">Your Belongings</label>
+                    </div>
+                    
+                    </div>
+                    
+					<div class="row center">
+						<button type="submit" id="fileButton" class="btn center deep-purple">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

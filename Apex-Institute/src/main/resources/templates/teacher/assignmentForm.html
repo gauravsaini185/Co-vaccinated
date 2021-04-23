@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+	<title>Add Assignment</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<th:block th:if="${message}">
+			<br>
+			<section class="container materialert success">
+				<i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+			</section>
+		</th:block>
+		<div class=" container">
+			<h4 class="deep-purple-text">New Assignment</h4>
+			<div class="divider"></div>
+			<br>
+			<div class="row">
+				<form th:action="@{/addAssignment}" method="POST" enctype="multipart/form-data">
+				<div class="col s12">
+					<div class="input-field col s6">
+						<select name="batch">
+							<option value="" disabled>Select Batch</option>
+							<option th:each="batch : ${batches}" th:value="${batch.batch_id}"
+								th:text="${batch.batch_name}"></option>
+						</select> <label>Batch</label>
+					</div>
+					<div class="input-field col s6">
+                        <input id="subject" type="text" class="validate" name="subject" required>
+                        <label for="name">Subject</label>
+                    </div>
+                    </div>
+                    <div class="col s12">
+                    <div class="input-field col s6">
+                     <input type="text" name = "date" class="datepicker">
+                     <label for="date">Last Date</label>
+                    </div>
+					<div class=" col s6 file-field input-field">
+						<!-- <div class="btn deep-purple"> -->
+							<!-- <span>File</span> --> <input type="file" id="file" name="file" onchange="Filevalidation()">
+							                     <label for="file">File</label>							
+						<!-- </div> -->
+							<input id="validate" class="file-path " type="text">
+							<span class="helper-text red-text"></span>
+					</div>
+					</div>
+					<div class="row center">
+						<button type="submit" id="fileButton" class="btn center deep-purple">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <th:block th:if="${message}">
+        <br>
+        <section class="container materialert success">
+            <i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+        </section>
+    </th:block>
+    <div class="row">
+        <div class="container">
+            <h5 class="deep-purple-text">All Students</h5>
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Batch</th>
+                    <th>Update / Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.name}">No Data</td>
+                    <td th:text="${student.phone}">No Data</td>
+                    <td>
+                        <div  th:each="batches : ${student.batches}" th:text="${batches.batch_name}">No batch selected</div>
+                    </td>
+                    <td>
+                    <a th:href="@{/updateStudent(student_id=${student.user_id})}"><i class="fas fa-pen deep-purple-text"></i></a>
+                    <a th:href="@{/removeStudent/{student_id}(student_id=${student.user_id})}"><i class="fas fa-trash-alt deep-purple-text"></i></a>&nbsp;
+                                            </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

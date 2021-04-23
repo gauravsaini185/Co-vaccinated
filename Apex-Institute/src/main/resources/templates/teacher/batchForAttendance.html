@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Student</title>
+</head>
+
+<body>
+
+    <div layout:fragment="content">
+        <div class="row">
+            <div class="container">
+                <h4 class="deep-purple-text">Select Student</h4>
+                <div class="divider"></div>
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="center-align">View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="student : ${students}">
+                            <td th:text="${student.name}">No Data</td>
+                            <td class="center-align"><a th:href="@{/showAttendance(batch_id=${batch.batch_id},student_id=${student.user_id})}"><i class="fas fa-eye deep-purple-text"></i></a>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

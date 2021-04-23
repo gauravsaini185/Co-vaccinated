@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{student/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
+    <title>Profile</title>
+</head>
+
+<body>
+<main layout:fragment="content">
+    <div class="container">
+        <form th:action="@{/updateStudentProfile}" th:object="${user}" method="post" enctype="multipart/form-data">
+            <input type="file" id="file" name="file" onchange="readURL(this);" accept="image/*">
+            <input type="hidden" th:field="${user.user_id}">
+            <div class="top">
+                <img id="profile_pic" th:src="${user.file_path}" alt="" class="profile_img">
+                <div class="edit-icon"><i class="fas fa-pen"></i></div>
+                <div class="info">
+                    <p class="name" th:text="${user.name}">user name</p>
+                    <p class="email" th:text="${user.email}">user email</p>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="row">
+                    <div class="input-field">
+                        <input type="text" name="name" th:value="${#strings.arraySplit(user.name, ' ')[0]}" required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="lastName" th:value="${#strings.arraySplit(user.name, ' ')[1]}" required>
+                        <label for="last_name">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input type="text" th:field="${user.phone}" required>
+                        <label for="phone">Phone</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" th:field="${user.email}" required>
+                        <label for="Email">Email</label>
+                    </div>
+                </div>
+                <div class="row radio">
+                    <input type="radio" id="male" name="gender" value="male" th:field="*{gender}" required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender"  value="female"
+                                           th:field="*{gender}" required>
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <button type="submit" class="btn">Save Changes</button>
+        </form>
+    </div>
+    </main>
+</body>
+
+</html>

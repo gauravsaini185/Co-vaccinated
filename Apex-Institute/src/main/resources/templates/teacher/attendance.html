@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance</title>
+   
+</head>
+
+<body>
+
+    <!-- main content starts -->
+    <main>
+    <div layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div class="attendance--heading">
+                        <h4 class="grey-text text-darken-3 center-on-small-only">Attendance</h4>
+                        <p class="deep-purple-text" th:text="${batch.batch_name}">Batch Name</p>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="col s12">
+                    <div class="row center mt-1">
+                        <div class="row">
+                            <div class="col s7 mt-1">
+                                <label>
+                                    <input name="all_action" id="all__absent" type="radio" />
+                                    <span>All Absent</span>
+                                </label>
+                                <label>
+                                    <input name="all_action" id="all__present" type="radio" />
+                                    <span>All Present</span>
+                                </label>
+                                <label>
+                                    <input name="all_action" id="holiday" type="radio" />
+                                    <span>It's Holiday</span>
+                                </label>
+                            </div>
+                            <div class="col s5">
+                                <input type="text" id = "currentDate" class="datepicker center-align">
+                            </div>
+                        </div>
+                        <table class="centered attendance-table">
+                            <thead class="deep-purple-text">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Absent</th>
+                                    <th>Present</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <form id="attendanceForm" name="attendanceForm" th:action="@{/saveAttendance}" method="post">
+                                <input type="hidden" id="data" name = "data"/>
+                                 <input type="hidden" id="date" name = "date"/>
+                                 <input type="hidden" name="batch_id" id="batch_id" th:value="${batch.batch_id}"/>
+                                    <tr th:each = "student : ${students}">
+                                        <td th:text="${student.name}">Alvin</td>
+                                        <td>
+                                            <label>
+                                                <input th:name="${student.user_id}"  value="absent" class="absent" type="radio" checked />
+                                                <span>Absent</span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input th:name="${student.user_id}" value="present" class="present" type="radio" checked />
+                                                <span>Present</span>
+                                            </label>
+                                        </td>
+                                    </tr>                                   
+                                </form>									
+								</tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="center-align">Total <span
+                                            class="center-align deep-purple-text flow-text total"></span></th>
+                                    <th class="center-align">Present <span
+                                            class="center-align green-text flow-text present--count"></span></th>
+                                    <th class="center-align">Absent <span
+                                            class="center-align materialize-red-text flow-text absent--count"></span>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="row center">
+                    <button class="btn deep-purple waves-effect waves-light mt-1" type="submit" onclick="saveAttendance()"/>Save
+                    </button>
+                </div>
+            </div>
+            </div>
+            </div>
+		
+	</main>
+
+    <!-- main content ends -->
+
+
+
+</body>
+</html>

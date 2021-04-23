@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers</title>
+</head>
+
+<body>
+
+    <div layout:fragment="content">
+        <th:block th:if="${message}">
+            <br>
+            <section class="container materialert success">
+                <i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+            </section>
+        </th:block>
+        <th:block th:if="${error}">
+		<br>
+		<section class="container materialert error">
+			<i class="material-icons">error_outline</i> <span th:text="${error}"></span>
+		</section>
+	</th:block>
+        <div class="row">
+            <div class="container">
+                <h5 class="deep-purple-text">All Teachers</h5>
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Salary</th>
+                            <th>Update / Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="teacher : ${teachers}">
+                            <td th:text="${teacher.name}">No Data</td>
+                            <td th:text="${teacher.phone}">No Data</td>
+                            <td th:text="${teacher.teacher_salary}">No Data</td>
+                            <td><a th:href="@{/updateTeacher(teacher_id=${teacher.user_id})}"><i class="fas fa-pen deep-purple-text"></i></a>
+                            <a th:href="@{/removeTeacher/{teacher_id}(teacher_id=${teacher.user_id})}"><i class="fas fa-trash-alt deep-purple-text"></i></a>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

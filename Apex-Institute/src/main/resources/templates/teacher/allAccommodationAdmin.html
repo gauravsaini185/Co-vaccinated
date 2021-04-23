@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Accommodation</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<th:block th:if="${message}">
+			<br>
+			<section class="container materialert success">
+				<i class="material-icons">check_circle</i> <span
+					th:text="${message}"></span>
+			</section>
+		</th:block>
+		<div class=" container" style="overflow-x: auto">
+			<h4 class="deep-purple-text">All Accommodation</h4>
+			<div class="divider"></div>
+			<br>
+			<div class="row">
+				<table id="example" class="display" style="width: 180%; overflow-x: auto">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>E-mail</th>
+							<th>University/College name</th>
+							<th>University/College Roll no</th>
+							<th>University Address</th>
+							<th>Select Room type</th>
+							<th>Arrival Date & Time</th>
+							<th>Special Request</th>
+							<th>Status</th>
+							<th>Update / Remove</th> 
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="assignment : ${accommodations}">
+							<td th:text="${assignment.name}">No Data</td>
+							<td th:text="${assignment.email}">No Data</td>
+							<td th:text="${assignment.collegeName}">No Data</td>
+							<td th:text="${assignment.collegeRollNo}">No Data</td>
+							<td th:text="${assignment.collegeAddress}">No Data</td>
+							<td th:text="${assignment.roomType}">No Data</td>
+							<td th:text="${assignment.arrivalDateTime}">No Data</td>
+							<td th:text="${assignment.specialRequest}">No Data</td>
+							<td th:text="${assignment.status}">No Data</td>
+							<td>
+                           		<a th:href="@{/updateAccommodation(accommodation_id=${assignment.accommodation_id})}" ><i class="fas fa-pen deep-purple-text"></i></a>
+                            	<a th:href="@{/removeAccommodation/{accommodation_id}(accommodation_id=${assignment.accommodation_id})}"><i class="fas fa-trash-alt deep-purple-text"></i></a>
+                            </td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

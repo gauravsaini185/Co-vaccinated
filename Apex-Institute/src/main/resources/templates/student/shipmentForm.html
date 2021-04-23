@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{student/layout}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<title>Shipment</title>
+</head>
+<body>
+<main layout:fragment="content">
+<th:block th:if="${message}">
+            <br>
+            <section class="container materialert success">
+                <i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+            </section>
+        </th:block>
+
+
+	<h1>Shipment Form </h1>
+	<br>
+	<hr>
+<section >
+	<form th:action="@{/shipmentFor}" method="POST" th:object="${shipment}">
+	<div class="container-fluid">
+	
+		<div class="form-group">
+			<div class="col-lg-6 col-md-6 col-12 form-group">
+				<label>Name</label>
+				<input id="name" type="text" name="name" class="form-control"  th:field="*{name}" required>
+			</div>
+			<div class="form-group">
+			<label>E-mail</label>
+			<input id="email" type="text" name="E-mail" th:field="*{email}" required class="form-control">
+		</div>
+				
+		</div>
+		<div class="form-group">
+			<div class="col-lg-6 col-md-6 col-12 form-group">
+				<label>University Name</label>
+				<input id="collname" type="text" name="collname" class="form-control"  th:field="*{college}" required>
+
+			</div>
+				
+		</div>
+		<div class="form-group">
+		<label>University Roll No</label>
+		<input id="collegeAddress" type="text" class="form-control" name="Address" placeholder = " Street Address" th:field="*{collegeRollNo}" required >
+		 <br>
+	</div>
+	  		<div class="form-group">
+  			<label>University Address</label>
+  	 		<textarea class="form-control" rows="5" id="comment" th:field="*{coll_address}"></textarea>
+  			</div>
+	
+		<div  class = "col-lg-6 col-md-6 col-12">
+		
+		<div class="form-group">
+			<label>Contact Person Name</label>
+			<input id="collegeName" type="text" name="cname" class="form-control " th:field="*{contact_Person}" required>
+		</div>
+		<div class="form-group">
+			<label>Contact Person Phone No</label>
+			<input id="collegeRollNo" type="text" name="Roll" class="form-control " th:field="*{phone}" required>
+		</div>
+	</div>
+		
+		<div class="form-group">
+  			<label>Shipping Address</label>
+  	 		<textarea class="form-control" rows="5" id="add" th:field="*{address}"></textarea>
+  			</div>
+	
+	<br>
+		<div class="row">
+				<label for="example-datetime-local-input" class="col-2 col-form-label">Delivery Time(From)</label>
+				<div class="col-lg-6 col-md-6 col-12">
+      <input class="form-control" type="datetime-local" value="" id="example-datetime-local-input"  th:field="*{delivery_Time_From}">
+  </div>
+</div><br>
+
+	<div class="row">
+				<label for="example-datetime-local-input" class="col-2 col-form-label">Delivery Time(To)</label>
+				<div class="col-lg-6 col-md-6 col-12">
+      <input class="form-control" type="datetime-local" value="" id="example-datetime-local-input"  th:field="*{delivery_Time_To}">
+  </div>
+</div>
+
+  <br> 
+  <div class="form-group">
+  	<label>Your Belongings</label>
+  	 <textarea class="form-control" rows="5" id="comment" th:field="*{your_Belongings}"></textarea>
+  </div>
+  <div class="text-center">
+
+  <button type="submit" class="btn-lg btn-success btn-outline-dark "> Submit</button>
+</div> 
+
+	</div>
+	</div>
+	</form>
+</section>
+</main>
+</body>
+</html>

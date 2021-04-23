@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Shipments</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<th:block th:if="${message}">
+			<br>
+			<section class="container materialert success">
+				<i class="material-icons">check_circle</i> <span
+					th:text="${message}"></span>
+			</section>
+		</th:block>
+		<div class=" container" style="overflow-x: auto">
+			<h4 class="deep-purple-text">All Shipments</h4>
+			<div class="divider"></div>
+			<br>
+			<div class="row">
+				<table id="example" class="display" style="width: 300%; overflow-x: auto">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>E-mail</th>
+							<th>University Name</th>
+							<th>University Roll No</th>
+							<th>University Address</th>
+							<th>Contact Person Name</th>
+							<th>Contact Person Phone No</th>
+							<th>Shipping Address</th>
+							<th>Delivery Time(From)</th>
+							<th>Delivery Time(To)</th>
+							<th>Your Belongings</th>
+							<th>Status</th>
+							<th>Update / Remove</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="assignment : ${shipments}">
+							<td th:text="${assignment.name}">No Data</td>
+							<td th:text="${assignment.email}">No Data</td>
+							<td th:text="${assignment.college}">No Data</td>
+							<td th:text="${assignment.collegeRollNo}">No Data</td>
+							<td th:text="${assignment.coll_address}">No Data</td>
+							<td th:text="${assignment.contact_Person}">No Data</td>
+							<td th:text="${assignment.phone}">No Data</td>
+							<td th:text="${assignment.address}">No Data</td>
+							<td th:text="${assignment.delivery_Time_From}">No Data</td>
+							<td th:text="${assignment.delivery_Time_To}">No Data</td>
+							<td th:text="${assignment.your_Belongings}">No Data</td>
+							<td th:text="${assignment.shipstatus}">No Data</td>
+							<td>
+                           		<a th:href="@{/updateShipment(shipment_id=${assignment.shipment_id})}" ><i class="fas fa-pen deep-purple-text"></i></a>
+                            	<a th:href="@{/removeShipment/{shipment_id}(shipment_id=${assignment.shipment_id})}"><i class="fas fa-trash-alt deep-purple-text"></i></a>
+                            </td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

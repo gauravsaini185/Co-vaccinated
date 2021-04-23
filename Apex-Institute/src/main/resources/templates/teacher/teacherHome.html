@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <!-- Body Starts -->
+    <div layout:fragment="content">
+        <div class="row">
+            <div class="center-on-small-only">
+                <div class=" section row" id="admin-cards">
+                    <div class="col s12 m4">
+                        <div class="card-panel light-blue accent-2 student">
+                            <div class="valign-wrapper">
+                                <div class="col s6 offset-s2 center">
+                                    <h6>Students</h6>
+                                </div>
+                                <h5 class="col s3 right-align" th:text="${studentCount}"></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="card-panel yellow lighten-2 batches">
+                            <div class="valign-wrapper">
+                                <div class="col s6 offset-s2 center">
+                                    <h6>Batches</h6>
+                                </div>
+                                <h5 class="col s3 right-align" th:text="${batchCount}"></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="card-panel green accent-2 teachers">
+                            <div class="valign-wrapper">
+                                <div class="col s6 offset-s2 center">
+                                    <h6>Teachers</h6>
+                                </div>
+                                <h5 class="col s3 right-align" th:text="${teacherCount}"></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col m8 s12">
+                    <div class="row">
+                        <h5 class="center">Income</h5>
+                        <canvas id="incomeChart"></canvas>
+                    </div>
+
+                    <div class="row grey lighten-3 student-table">
+                        <h5 class="center">New Students</h5>
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Batch</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="student : ${students}">
+                                    <td th:text="${student.name}"></td>
+                                    <td>
+                                        <div  th:each="batches : ${student.batches}" th:text="${batches.batch_name}">No batch selected</div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+
+                    <h5 class="center">Students</h5>
+                    <div class="card-panel">
+                        <canvas id="studentChart"></canvas>
+                    </div>
+                    <div class="blue-grey fixed-height">
+                        <table>
+                            <h5 class="center">Teachers</h5>
+                            <thead>
+                                <tr></tr>
+                            </thead>
+
+                            <tbody>
+                                 <tr th:each="teacher : ${teachers}">
+                            <td th:text="${teacher.name}">No Data</td>
+                            <td th:text="${teacher.phone}">No Data</td>
+                         <!--    <td th:text="${teacher.teacher_salary}">No Data</td>
+                            <td><a th:href="@{/removeTeacher/{teacher_id}(teacher_id=${teacher.user_id})}">Remove</a>
+                             <a th:href="@{/updateTeacher(teacher_id=${teacher.user_id})}">Update</a>
+                            </td> -->
+                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="blue weak-points">
+                        <h5 class="center">Your Batche(s)</h5>
+                        <table>
+
+                            <thead>
+                                <tr></tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="batch : ${batches}">
+                                    <td th:text="${batch.batch_name}" class="batch-name"></td>
+                                    <td th:text="${batch.subject}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+
+</body>
+
+</html>

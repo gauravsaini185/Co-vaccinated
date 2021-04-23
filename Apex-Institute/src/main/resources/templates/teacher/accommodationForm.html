@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+	<title>Add Accommodation</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<th:block th:if="${message}">
+			<br>
+			<section class="container materialert success">
+				<i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+			</section>
+		</th:block>
+		<div class=" container">
+			<h4 class="deep-purple-text">New Accommodation</h4>
+			<div class="divider"></div>
+			<br>
+			<div class="row">
+				<form th:action="@{/addAccommodation}" method="POST" enctype="multipart/form-data" th:object="${accommodation}">
+				<div class="col s12">
+				
+					<div class="input-field col s6">
+                        <input id="name" type="text" class="validate" name="subject" required th:field="*{name}">
+                        <label for="name">Name</label>
+                    </div>
+                    
+					<div class="input-field col s6">
+                        <input id="subject" type="email" class="validate" name="subject" required th:field="*{email}">
+                        <label for="name">E-mail</label>
+                    </div>
+                    </div>
+                    <div class="col s12">
+                    <div class="input-field col s6">
+                     <input type="text" name = "date" class="validate" th:field="*{collegeName}">
+                     <label for="date">University/College name</label>
+                    </div>
+                     <div class="input-field col s6">
+                     <input type="text" name = "date" class="validate" th:field="*{collegeRollNo}">
+                     <label for="date">University/College Roll no</label>
+                    </div>
+					
+					</div>
+					<div class="col s12">
+                    <div class="input-field col s6">
+                     <input type="text" name = "date" class="validate" th:field="*{collegeAddress}">
+                     <label for="date">University Address</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select id="schedule" name="schedule" th:field="*{roomType}">
+                            <option value="" disabled>Select</option>
+                            <option value="Non AC">NON AC</option>
+                            <option value="AC">AC</option>
+                            
+                        </select>
+                        <label>Select Room type</label>
+                    </div>
+                    
+					</div>
+					<div class="col s12">
+                    <div class="input-field col s6">
+                     <input type="text" name = "date" class="datepicker" th:field="*{arrivalDateTime}">
+                     <label for="date">Arrival Date & Time</label>
+                    </div>
+                     <div class="input-field col s6">
+                     <input type="text" name = "date" class="validate" th:field="*{specialRequest}">
+                     <label for="date">Special Request</label>
+                    </div>
+					
+					</div>
+					<div class="row center">
+						<button type="submit" id="fileButton" class="btn center deep-purple">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

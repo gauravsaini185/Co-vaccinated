@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!--Import Animate.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css"
+		integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
+
+	<!--Import font awesome-->
+	<script src="https://kit.fontawesome.com/65a7239007.js" crossorigin="anonymous"></script>
+
+	<!--Import Modified css-->
+	<link rel="stylesheet" href="css/modified.css" />
+	<link rel="stylesheet" href="css/sass/alerts.css">
+
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="css/sass/materialize.css" media="screen,projection" />
+
+	<title>Login</title>
+</head>
+
+<body class="deep-purple lighten-5">
+	<nav class="deep-purple">
+		<div class="container">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">&nbsp;APEX&nbsp;<sub style="font-size: small;">INSTITUTE</sub></a>
+				<ul id="nav-mobile" class="right">
+					<li><a href="/">Home</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<th:block th:if="${message}">
+		<br>
+		<section class="container materialert success">
+			<i class="material-icons">check_circle</i> <span>Successfully
+				Registered</span>
+		</section>
+	</th:block>
+	<th:block th:if="${param.error}">
+		<br>
+		<section class="container materialert error">
+			<i class="material-icons">error_outline</i> <span>Invalid
+				credentials.</span>
+		</section>
+	</th:block>
+	<th:block th:if="${param.logout}">
+		<br>
+		<section class="container materialert info">
+			<i class="material-icons">check_circle</i> <span>You have been
+				logged out.</span>
+		</section>
+	</th:block>
+	<section class="section row col s12 valign-wrapper">
+		<div class="col s6 hide-on-small-only">
+			<img src="img/authenticate.svg" class="responsive-img" alt="register">
+		</div>
+
+
+
+		<div class="col s12 m4 white container">
+
+			<h5 class="deep-purple-text center">Login</h5>
+			<form method="post" th:action="@{/login}">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<div class="input-field">
+					<input type="text" id="username" name="username" class="validate" autocomplete="username" autofocus/>
+					<label for="email">E-mail</label> <span class="helper-text" data-error="Oops!"
+						data-success="Great"></span>
+				</div>
+				<div class="input-field">
+					<input type="password" name="password" id="password" autocomplete="current-password"/> <label for="password">Password</label>
+				</div>
+				<div class="row">
+					<div class="col s6 m6">
+						<button type="submit" id="login-submit" name="login-submit"
+							class="btn deep-purple lighten-1 waves-effect left">Login</button>
+					</div>
+					<div class="col s6 m6 offset-5m right">
+						<a href="/register" class="right">Register</a><br /> <a href="#"
+							class="right">Forgot&nbsp;Something</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+
+	<!-- footer -->
+
+	<div th:replace="footer:: footer"></div>
+
+	<!-- footer ends -->
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/modified.js"></script>
+</body>
+
+</html>

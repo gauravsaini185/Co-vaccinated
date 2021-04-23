@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+.container{
+	width: 99%;
+}
+
+h4{
+	font-size: 28px;
+	color: #673ab7;
+	margin-bottom: .5em;
+	padding-bottom: .25em;
+	border-bottom:1px solid #ccc;
+}
+
+table{
+	text-align: center;
+	border-collapse: collapse; 
+}
+
+th{
+	font-weight: 500;
+}
+
+.display, th{
+	font-size: 14px;
+}
+
+display, td{
+	font-size: 12px;
+	font-weight: 400;
+}
+
+table tr{
+	margin: 1em;
+	border: 1px solid #ccc;
+}
+
+table .fas{
+	color: #673ab7;
+	font-size: 16px;
+}
+
+table td,thead tr th{
+	padding: 1em 0;
+}
+
+.empty p{
+	text-align: center;
+	margin:.5em;
+}
+
+.empty b{
+	color: #673ab7;
+}

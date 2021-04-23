@@ -1,0 +1,48 @@
+.jumbotron {
+  background: #fff;
+}
+h1,h2,h3,h4{
+	display:flex;
+	justify-content: space-evenly;
+	color: #444;
+}
+.fa {
+  font-size: 15px;
+  font-weight: 500;
+  color: #673ab7;
+}
+table {
+  width: 100%;
+}
+
+td,th{
+	padding: 0 !important;
+}
+
+th {
+  text-align: center;
+}
+td {
+  width: 2em !important;
+  height: 2em !important;
+  text-align: center;
+  line-height: 100px !important;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+.hover {
+  background: #eee;
+}
+
+#left,#right{
+	color: #673ab7;
+}
+
+.is_present{
+	background-color: #baf9de;
+}
+
+.is_absent{
+	background-color: #f9bac6;
+}

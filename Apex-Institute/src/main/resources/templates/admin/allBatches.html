@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batches</title>
+</head>
+
+<body>
+
+    <div layout:fragment="content">
+        <th:block th:if="${message}">
+            <br>
+            <section class="container materialert success">
+                <i class="material-icons">check_circle</i> <span th:text="${message}"></span>
+            </section>
+        </th:block>
+        <th:block th:if="${error}">
+            <br>
+            <section class="container materialert error">
+                <i class="material-icons">check_circle</i> <span th:text="${error}"></span>
+            </section>
+        </th:block>
+        <div class="row">
+            <div class="container">
+                <h4 class="deep-purple-text">All Batches</h4>
+                <div class="divider"></div>
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Subject</th>
+                            <th>Teacher</th>
+                            <th>Update / Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="batch : ${batches}">
+                            <td th:text="${batch.batch_name}">No Data</td>
+                            <td th:text="${batch.batch_class}">No Data</td>
+                            <td th:text="${batch.subject}">No Data</td>
+                            <td th:text="${batch.batch_teacher.getName()}">No Data</td>
+                            <td>
+                           		<a th:href="@{/updateBatch(batch_id=${batch.batch_id})}" ><i class="fas fa-pen deep-purple-text"></i></a>
+                            	<a th:href="@{/removeBatch/{batch_id}(batch_id=${batch.batch_id})}"><i class="fas fa-trash-alt deep-purple-text"></i></a>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

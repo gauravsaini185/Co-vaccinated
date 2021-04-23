@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{student/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/Style/batchForAttendance.css">
+    <title>Batches</title>
+</head>
+
+<body>
+
+    <main layout:fragment="content">
+        <div class="row">
+            <div class="container">
+                <h4>Select Batch</h4>
+				<th:block th:unless="${not #lists.isEmpty(user.batches)}">
+					<div class="empty">
+						<p>You are not in any batch</p>
+						<p>
+							<b>Please Contact Admin</b>
+						</p>
+					</div>
+				</th:block>
+				<th:block th:unless="${ #lists.isEmpty(user.batches)}">
+					<table id="example" class="display" style="width: 100%">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Class</th>
+								<th>Subject</th>
+								<th>Teacher</th>
+								<th>View</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="batch : ${user.batches}">
+								<td th:text="${batch.batch_name}">No Data</td>
+								<td th:text="${batch.batch_class}">No Data</td>
+								<td th:text="${batch.subject}">No Data</td>
+								<td th:text="${batch.batch_teacher.getName()}">No Data</td>
+								<td><a
+									th:href="@{/studentAttendance(batch_id=${batch.batch_id})}"><i
+										class="fas fa-eye"></i></a></td>
+
+							</tr>
+
+						</tbody>
+					</table>
+				</th:block>
+			</div>
+        </div>
+    </main>
+</body>
+
+</html>

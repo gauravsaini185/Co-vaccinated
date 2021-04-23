@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{student/layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/Style/attendance.css">
+	<script type="text/javascript" src="js/attendance.js"></script>
+<title>Home | Student</title>
+</head>
+
+<body>
+	<main layout:fragment="content">
+		<div class="container" id="main">
+		<input type="hidden" id="attendance" th:value="${attendance}" />
+			<div class="jumbotron">
+				<h1 class="text-center">
+					<a id="left" href="#"><i class="fas fa-chevron-left"> </i></a><span><span
+						id="month"> </span><span></span> <span id="year"> </span></span><a
+						id="right" href="#"><i class="fas fa-chevron-right"> </i></a>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<table onchange="updateAttendance()" class="table"></table>
+				</div>
+			</div>
+		</div>
+		<!-- container -->
+	</main>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Accommodation</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<th:block th:if="${message}">
+			<br>
+			<section class="container materialert success">
+				<i class="material-icons">check_circle</i> <span
+					th:text="${message}"></span>
+			</section>
+		</th:block>
+		<div class=" container">
+			<h4 class="deep-purple-text">All Accommodation</h4>
+			<div class="divider"></div>
+			<br>
+			<div class="row">
+				<table id="example" class="display" style="width: 100%">
+					<thead>
+						<tr>
+							<th>Batch</th>
+							<th>Last Date</th>
+							<th>Subject</th>
+							<th>Download / Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="assignment : ${assignments}">
+							<td th:text="${assignment.batch.getBatch_name()}">No Data</td>
+							<td th:text="${assignment.assignment_date}">No Data</td>
+							<td th:text="${assignment.subject}">No Data</td>
+							<td><a
+								th:href="@{/downloadAssignment/{assignment_id}(assignment_id=${assignment.assignment_id})}"><i
+									class="fas fa-arrow-down deep-purple-text"></i></a> <a
+								th:href="@{removeAssignment/{assignment_id}(assignment_id=${assignment.assignment_id})}"><i
+									class="fas fa-trash-alt deep-purple-text"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
